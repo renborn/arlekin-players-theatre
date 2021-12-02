@@ -57,15 +57,6 @@ $("#join-form").submit(async function (e) {
         options.channel = $("#channel").val();
         options.uid = Number($("#uid").val());
         await join();
-        if (options.role === "host") {
-            $("#success-alert a").attr("href", `index.html?appid=${options.appid}&channel=${options.channel}&token=${options.token}`);
-            if (options.token) {
-                $("#success-alert-with-token").css("display", "block");
-            } else {
-                $("#success-alert a").attr("href", `index.html?appid=${options.appid}&channel=${options.channel}&token=${options.token}`);
-                $("#success-alert").css("display", "block");
-            }
-        }
     } catch (error) {
         console.error(error);
     } finally {
@@ -136,15 +127,18 @@ async function subscribe(user, mediaType) {
     await client.subscribe(user, mediaType);
     console.log("subscribe success");
     if (mediaType === 'video') {
-        const player = $(`
-        <div id="player-${uid}" class="player"></div>
-    `);
+        const player = $(`<div id="player-${uid}" class="player"></div>`);
         $("#remote-playerlist").append(player);
         user.videoTrack.play(`player-${uid}`, {fit:"contain"});
     }
     if (mediaType === 'audio') {
         user.audioTrack.play();
     }
+
+    setTimeout(() => {
+        const videoBlock = $("#remote-playerlist").find('video');
+        videoBlock.attr('controls', '')
+    }, 1000)
 }
 
 function handleUserPublished(user, mediaType) {

@@ -28,10 +28,6 @@ input {
     margin: 8px 0;
 }
 
-#success-alert, #success-alert-with-token {
-    display: none;
-}
-
 
 .backdrop {
     background-color: #000;
