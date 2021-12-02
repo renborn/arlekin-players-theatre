@@ -4,56 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Basic Live -- Agora</title>
-    <link rel="stylesheet" href="../assets/bootstrap.min.css">
-    <link rel="stylesheet" href="./index.css">
-</head>
-<body>
 
-<form id="join-form" name="join-form">
-    <div class="row join-info-group" hidden>
-        <div class="col-sm">
-            <p class="join-info-text">AppID</p>
-            <input id="appid" type="text" value="aa30941ce7eb4fa8bfb6e7b3843d279a" required>
-        </div>
-        <div class="col-sm" hidden>
-            <p class="join-info-text">Token(optional)</p>
-            <input id="token" type="text" placeholder="enter token">
-        </div>
-        <div class="col-sm">
-            <p class="join-info-text">Channel</p>
-            <input id="channel" type="text" value="witness" required>
-        </div>
-        <div class="col-sm" hidden>
-            <p class="join-info-text">User ID(optional)</p>
-            <input id="uid" type="text" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" onafterpaste="this.value=this.value.replace(/[^0-9]/g,'')" placeholder="Enter the user ID">
-        </div>
-    </div>
-    <!--
-          <div class="button-group">
-    -->
-    <button id="host-join" type="submit" class="btn btn-primary btn-sm">Host</button>
-    <button id="audience-join" type="button" class="btn btn-primary btn-sm" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">Guest
-    </button>
-    <div class="audience dropdown-menu">
-        <a id="lowLatency" class="dropdown-item" label="Interactive Live Streaming Standard" href="#">Interactive Live
-            Streaming Standard</a>
-        <a id="ultraLowLatency" class="dropdown-item" label="Interactive Live Streaming Premium" href="#">Interactive
-            Live Streaming Premium</a>
-    </div>
-    <button id="leave" type="button" class="btn btn-primary btn-sm" disabled>Leave</button>
-    <!--
-            </div>
-    -->
-</form>
-<!-- Single button -->
-<div id="remote-playerlist"></div>
-<div id="local-player" class="player"></div>
+    <title>Arlekin players theatre / witness-livestream</title>
+
+    <style>
+        .backdrop {
+            background-color: #000;
+            margin: 0;
+        }
+
+        .ratio {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .ratio::before {
+            display: block;
+            padding-top: 56.25%;
+            content: "";
+        }
+        .ratio > * {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body class="backdrop">
+
+<div id="livestream" class="ratio"></div>
 
 <script src="../assets/jquery-3.4.1.min.js"></script>
-<script src="../assets/bootstrap.bundle.min.js"></script>
-<script src="https://download.agora.io/sdk/release/AgoraRTC_N.js"></script>
+<script src="../assets/AgoraRTC_N.js"></script>
 <script src="./basicLive.js"></script>
 </body>
 </html>
