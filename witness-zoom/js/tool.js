@@ -35,12 +35,12 @@ var testTool = {
   },
   getMeetingConfig: function () {
     return {
-      mn: '8342915730',
+      mn: '81801463696',
       // mn: '9289684478',
       name: testTool.b64EncodeUnicode(
         document.getElementById("display_name").value
       ),
-      pwd: '',
+      pwd: 'c0FkUmQ2ekhCQXJ5VTV3aDhYczRLZz09',
       // pwd: 'WVdGbTlLYk0vR1FTQTloWmljSU5RQT09',
       role: 0,
       email: '',
